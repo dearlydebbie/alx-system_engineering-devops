@@ -201,7 +201,7 @@ drwxrwxrwt 13 root   root   4096 Sep 20 18:18 ..<br>
 -rw-rw-r--  1 julien julien    0 Sep 20 18:18 ls_cwd_content<br>
 julien@ubuntu:/tmp/h$ <br>
 
-# 9. JDuplicate last line
+# 9. Duplicate last line
 Write a script that duplicates the last line of the file iacta
 
 * The file iacta will be in the working directory
@@ -278,13 +278,325 @@ total 0<br>
 total 0<br>
 julien@ubuntu:/tmp/h$ <br>
 
-# 11. Directories
-Create a script that adds execute permission to all subdirectories of the current directory for the owner, the group owner and all other users. Regular files should not be changed.
+# 11. Don't just count your directories, make your directories count
+Write a script that counts the number of directories and sub-directories in the current directory.
 
-# 12. More directories
-Create a script that creates a directory called my_dir with permissions 751 in the working directory.
+* The current and parent directories should not be taken into account
+* Hidden directories should be counted
 
-# 13. Change group
+julien@production-503e7013:~/shell/fun_with_the_shell$ ls -lRa<br>
+.:<br>
+total 32<br>
+drwxrwxr-x 3 julien julien 4096 Jan 20 03:53 .<br>
+drwxrwxr-x 3 julien julien 4096 Jan 20 02:58 ..<br>
+-rwxr--r-- 1 julien julien 43 Jan 20 02:59 0-commas<br>
+-rwxr--r-- 1 julien julien 47 Jan 20 02:50 1-empty_casks<br>
+-rwxrw-r-- 1 julien julien 68 Jan 20 03:35 2-gifs<br>
+-rwxrw-r-- 1 julien julien 47 Jan 20 03:53 3-directories<br>
+-rw-rw-r-- 1 julien julien 14 Jan 20 03:35 Makefile<br>
+drwxrwxr-x 4 julien julien 4096 Jan 20 03:42 test_dir<br>
+<br>
+./test_dir:<br>
+total 16<br>
+drwxrwxr-x 4 julien julien 4096 Jan 20 03:42 .<br>
+drwxrwxr-x 3 julien julien 4096 Jan 20 03:53 ..<br>
+-rw-rw-r-- 1 julien julien 0 Jan 20 03:40 .horrible_selfie.gif<br>
+-rw-rw-r-- 1 julien julien 0 Jan 20 03:23 README.md<br>
+-rw-rw-r-- 1 julien julien 0 Jan 20 03:17 docker.gif<br>
+-rw-rw-r-- 1 julien julien 0 Jan 20 03:17 file.sh<br>
+drwxrwxr-x 2 julien julien 4096 Jan 20 03:23 photos<br>
+drwxrwxr-x 2 julien julien 4096 Jan 20 03:23 rep.gif<br>
+<br>
+./test_dir/photos:<br>
+total 8<br>
+drwxrwxr-x 2 julien julien 4096 Jan 20 03:23 .<br>
+drwxrwxr-x 4 julien julien 4096 Jan 20 03:42 ..<br>
+-rw-rw-r-- 1 julien julien 0 Jan 20 03:23 cat.gif<br>
+-rw-rw-r-- 1 julien julien 0 Jan 20 03:22 index.html<br>
+-rw-rw-r-- 1 julien julien 0 Jan 20 03:23 main.gif<br>
+-rw-rw-r-- 1 julien julien 0 Jan 20 03:23 rudy_rigot.gif<br>
+<br>
+./test_dir/rep.gif:<br>
+total 8<br>
+drwxrwxr-x 2 julien julien 4096 Jan 20 03:23 .<br>
+drwxrwxr-x 4 julien julien 4096 Jan 20 03:42 ..<br>
+julien@production-503e7013:~/shell/fun_with_the_shell$ ./11-directories<br>
+3<br>
+julien@production-503e7013:~/shell/fun_with_the_shell$<br>
+
+# 12. What’s new
+Create a script that displays the 10 newest files in the current directory.<br>
+<br>
+Requirements:<br>
+* One file per line
+* Sorted from the newest to the oldest
+<br>
+alex@ubuntu:/tmp$ ls -l<br>
+total 7<br>
+-rwxr-xr-x 1 501 dialout  32 Sep 27 23:51 0-hello_world<br>
+-rwxr-xr-x 1 501 dialout  46 Sep 28 11:09 10-no_more_js<br>
+-rwxr-xr-x 1 501 dialout  43 Sep 28 11:19 11-directories
+-rwxr-xr-x 1 501 dialout  30 Sep 29 13:43 12-newest_files<br>
+-rwxr-xr-x 1 501 dialout  28 Sep 27 23:54 1-confused_smiley<br>
+-rwxr-xr-x 1 501 dialout  28 Sep 27 23:58 2-hellofile<br>
+-rwxr-xr-x 1 501 dialout  39 Sep 27 23:58 3-twofiles<br>
+-rwxr-xr-x 1 501 dialout  33 Sep 27 23:59 4-lastlines<br>
+-rwxr-xr-x 1 501 dialout  33 Sep 28 00:00 5-firstlines
+-rwxr-xr-x 1 501 dialout  28 Sep 28 00:25 6-third_line<br>
+-rwxr-xr-x 1 501 dialout 110 Sep 28 00:34 7-file<br>
+-rwxr-xr-x 1 501 dialout  36 Sep 28 00:34 8-cwd_state<br>
+-rwxr-xr-x 1 501 dialout  35 Sep 28 00:35 9-duplicate_last_line<br>
+-rw-r--r-- 1 501 dialout  19 Sep 27 23:51 README.md<br>
+alex@ubuntu:/tmp$ ./12-newest_files <br>
+12-newest_files<br>
+11-directories<br>
+10-no_more_js<br>
+9-duplicate_last_line<br>
+7-file<br>
+8-cwd_state<br>
+6-third_line<br>
+5-firstlines<br>
+4-lastlines<br>
+3-twofiles<br>
+alex@ubuntu:/tmp$<br>
+
+# 13. Being unique is better than being perfect
+Create a script that takes a list of words as input and prints only words that appear exactly once.<br>
+
+* Input format: One line, one word
+* Output format: One line, one word
+* Words should be sorted
+
+julien@ubuntu:/tmp/0x02$ cat list <br>
+C#<br>
+C<br>
+Javascript<br>
+Perl<br>
+PHP<br>
+PHP<br>
+ASP<br>
+R<br>
+Go<br>
+C#<br>
+C++<br>
+R<br>
+Perl<br>
+Javascript<br>
+Javascript<br>
+Python<br>
+Javascript<br>
+Javascript<br>
+Javascript<br>
+Java<br>
+Java<br>
+Python<br>
+Javascript<br>
+Javascript<br>
+Javascript<br>
+ASP<br>
+julien@ubuntu:/tmp/0x02$ cat list | ./13-unique <br>
+C<br>
+C++<br>
+Go<br>
+julien@ubuntu:/tmp/0x02$<br>
+
+
+# 14. It must be in that file
+Display lines containing the pattern “root” from the file /etc/passwd<br>
+
+$ ./14-findthatword<br>
+root:*:0:0:System Administrator:/var/root:/bin/sh<br>
+daemon:*:1:1:System Services:/var/root:/usr/bin/false<br>
+_cvmsroot:*:212:212:CVMS Root:/var/empty:/usr/bin/false<br>
+$<br>
+
+
+# 15. Count that word
+Display the number of lines that contain the pattern “bin” in the file /etc/passwd<br>
+
+$ ./15-countthatword<br>
+81<br>
+$ <br>
+
+
+# 16. What's next?
+Display lines containing the pattern “root” and 3 lines after them in the file /etc/passwd.<br>
+
+$ ./16-whatsnext<br>
+root:*:0:0:System Administrator:/var/root:/bin/sh<br>
+daemon:*:1:1:System Services:/var/root:/usr/bin/false<br>
+_uucp:*:4:4:Unix to Unix Copy Protocol:/var/spool/uucp:/usr/sbin/uucico<br>
+_taskgated:*:13:13:Task Gate Daemon:/var/empty:/usr/bin/false<br>
+_networkd:*:24:24:Network Services:/var/networkd:/usr/bin/false<br>
+--<br>
+_cvmsroot:*:212:212:CVMS Root:/var/empty:/usr/bin/false<br>
+_usbmuxd:*:213:213:iPhone OS Device Helper:/var/db/lockdown:/usr/bin/false<br>
+_dovecot:*:214:6:Dovecot Administrator:/var/empty:/usr/bin/false<br>
+_dpaudio:*:215:215:DP Audio:/var/empty:/usr/bin/false<br>
+$<br>
+
+# 17. I hate bins
+Display all the lines in the file /etc/passwd that do not contain the pattern “bin”.<br>
+
+ $ ./17-hidethisword<br>
+\#\#<br>
+\# User Database<br>
+\#<br>
+\# Note that this file is consulted directly only when the system is running<br>
+\# in single-user mode. At other times this information is provided by<br>
+\# Open Directory.<br>
+\#<br>
+\# See the opendirectoryd(8) man page for additional information about<br>
+\# Open Directory.<br>
+\#\#<br>
+$<br>
+
+# 18.  Letters only please
+Display all lines of the file /etc/ssh/sshd_config starting with a letter.
+* include capital letters as well
+
+ $ ./18-letteronly<br>
+SyslogFacility AUTHPRIV<br>
+AuthorizedKeysFile  .ssh/authorized_keys<br>
+UsePrivilegeSeparation sandbox # Default for new installations.<br>
+AcceptEnv LANG LC_*<br>
+Subsystem   sftp    /usr/libexec/sftp-server<br>
+$<br>
+
+# 19. A to Z
+Replace all characters A and c from input to Z and e respectively.<br>
+
+ julien@ubuntu:/tmp/0x02$ echo 'Replace all characters `A` and `c` from input to `Z` and `e`.' | ./19-AZ <br>
+Replaee all eharaeters `Z` and `e` from input to `Z` and `e`.<br>
+julien@ubuntu:/tmp/0x02$ <br>
+
+# 20. Without C, you would live in hiago
+Create a script that removes all letters c and C from input.<br>
+
+julien@ubuntu:/tmp/0x02$ echo Chicago | ./20-hiago <br>
+hiago<br>
+julien@ubuntu:/tmp/0x02$ <br>
+
+
+# 21. esreveR
+Write a script that reverse its input.<br>
+
+julien@ubuntu:/tmp/0x02$ echo "Reverse" | ./21-reverse <br>
+esreveR<br>
+julien@ubuntu:/tmp/0x02$ <br>
+
+# 22. DJ Cut Killer
+Write a script that displays all users and their home directories, sorted by users.
+* Based on the the /etc/passwd file
+
+julien@ubuntu:/tmp/0x02$ cat /etc/passwd<br>
+root:x:0:0:root:/root:/bin/bash<br>
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin<br>
+bin:x:2:2:bin:/bin:/usr/sbin/nologin<br>
+sys:x:3:3:sys:/dev:/usr/sbin/nologin<br>
+sync:x:4:65534:sync:/bin:/bin/sync<br>
+games:x:5:60:games:/usr/games:/usr/sbin/nologin<br>
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin<br>
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin<br>
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin<br>
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin<br>
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin<br>
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin<br>
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin<br>
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin<br>
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin<br>
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin<br>
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin<br>
+systemd-timesync:x:100:102:systemd Time Synchronization,,,:/run/systemd:/bin/false<br>
+systemd-network:x:101:103:systemd Network Management,,,:/run/systemd/netif:/bin/false<br>
+systemd-resolve:x:102:104:systemd Resolver,,,:/run/systemd/resolve:/bin/false<br>
+systemd-bus-proxy:x:103:105:systemd Bus Proxy,,,:/run/systemd:/bin/false<br>
+syslog:x:104:108::/home/syslog:/bin/false<br>
+_apt:x:105:65534::/nonexistent:/bin/false<br>
+messagebus:x:106:110::/var/run/dbus:/bin/false<br>
+uuidd:x:107:111::/run/uuidd:/bin/false<br>
+lightdm:x:108:114:Light Display Manager:/var/lib/lightdm:/bin/false<br>
+whoopsie:x:109:116::/nonexistent:/bin/false<br>
+avahi-autoipd:x:110:119:Avahi autoip daemon,,,:/var/lib/avahi-autoipd:/bin/false<br>
+avahi:x:111:120:Avahi mDNS daemon,,,:/var/run/avahi-daemon:/bin/false<br>
+dnsmasq:x:112:65534:dnsmasq,,,:/var/lib/misc:/bin/false<br>
+colord:x:113:123:colord colour management daemon,,,:/var/lib/colord:/bin/false<br>
+speech-dispatcher:x:114:29:Speech Dispatcher,,,:/var/run/speech-dispatcher:/bin/false<br>
+hplip:x:115:7:HPLIP system user,,,:/var/run/hplip:/bin/false<br>
+kernoops:x:116:65534:Kernel Oops Tracking Daemon,,,:/:/bin/false<br>
+pulse:x:117:124:PulseAudio daemon,,,:/var/run/pulse:/bin/false<br>
+rtkit:x:118:126:RealtimeKit,,,:/proc:/bin/false<br>
+saned:x:119:127::/var/lib/saned:/bin/false<br>
+usbmux:x:120:46:usbmux daemon,,,:/var/lib/usbmux:/bin/false<br>
+julien:x:1000:1000:Julien Barbier,,,:/home/julien:/bin/bash
+guillaume:x:1001:1001:,,,:/home/guillaume:/bin/bash<br>
+betty:x:1002:1002::/home/betty:<br>
+julien@ubuntu:/tmp/0x02$<br>
+julien@ubuntu:/tmp/0x02$ ./22-users_and_homes <br>
+_apt:/nonexistent<br>
+avahi-autoipd:/var/lib/avahi-autoipd<br>
+avahi:/var/run/avahi-daemon<br>
+backup:/var/backups<br>
+betty:/home/betty<br>
+bin:/bin<br>
+colord:/var/lib/colord<br>
+daemon:/usr/sbin<br>
+dnsmasq:/var/lib/misc<br>
+games:/usr/games<br>
+gnats:/var/lib/gnats<br>
+guillaume:/home/guillaume<br>
+hplip:/var/run/hplip<br>
+irc:/var/run/ircd<br>
+julien:/home/julien<br>
+kernoops:/<br>
+lightdm:/var/lib/lightdm<br>
+list:/var/list<br>
+lp:/var/spool/lpd<br>
+mail:/var/mail<br>
+man:/var/cache/man<br>
+messagebus:/var/run/dbus<br>
+news:/var/spool/news<br>
+nobody:/nonexistent<br>
+proxy:/bin<br>
+pulse:/var/run/pulse<br>
+root:/root<br>
+rtkit:/proc<br>
+saned:/var/lib/saned<br>
+speech-dispatcher:/var/run/speech-dispatcher<br>
+sync:/bin<br>
+sys:/dev<br>
+syslog:/home/syslog<br>
+systemd-bus-proxy:/run/systemd<br>
+systemd-network:/run/systemd/netif<br>
+systemd-resolve:/run/systemd/resolve<br>
+systemd-timesync:/run/systemd<br>
+usbmux:/var/lib/usbmux<br>
+uucp:/var/spool/uucp<br>
+uuidd:/run/uuidd<br>
+whoopsie:/nonexistent<br>
+www-data:/var/www<br>
+julien@ubuntu:/tmp/0x02$ <br>
+
+
+# 23. Change group
+Write a script that changes the group owner to school for the file hello
+
+* The file hello will be in the working directory
+
+
+# 24. Change group
+Write a script that changes the group owner to school for the file hello
+
+* The file hello will be in the working directory
+
+
+# 25. Change group
+Write a script that changes the group owner to school for the file hello
+
+* The file hello will be in the working directory
+
+# 26. Change group
 Write a script that changes the group owner to school for the file hello
 
 * The file hello will be in the working directory
