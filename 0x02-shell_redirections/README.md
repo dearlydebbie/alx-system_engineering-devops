@@ -38,16 +38,16 @@ Display the content of the /etc/passwd file.<br>
 Example:<br>
 
 $ ./2-hellofile<br>
-##<br>
-# User Database<br>
-#<br>
-# Note that this file is consulted directly only when the system is running<br>
-# in single-user mode. At other times this information is provided by<br>
-# Open Directory.<br>
-#<br>
-# See the opendirectoryd(8) man page for additional information about<br>
-# Open Directory.<br>
-##<br>
+\#\#<br>
+\#User Database<br>
+\#<br>
+\# Note that this file is consulted directly only when the system is running<br>
+\# in single-user mode. At other times this information is provided by<br>
+\# Open Directory.<br>
+\#<br>
+\# See the opendirectoryd(8) man page for additional information about<br>
+\# Open Directory.<br>
+\#\#<br>
 nobody:*:-2:-2:Unprivileged User:/var/empty:/usr/bin/false<br>
 root:*:0:0:System Administrator:/var/root:/bin/sh<br>
 daemon:*:1:1:System Services:/var/root:/usr/bin/false<br>
@@ -69,25 +69,25 @@ Display the content of /etc/passwd and /etc/hosts<br>
 Example:<br>
 
 $ ./3-twofiles<br>
-##<br>
-# User Database<br>
-#<br>
-# Note that this file is consulted directly only when the system is running<br>
-# in single-user mode. At other times this information is provided by<br>
-# Open Directory.<br>
-#<br>
-# See the opendirectoryd(8) man page for additional information about<br>
-# Open Directory.<br>
-##<br>
+\#\#<br>
+\# User Database<br>
+\#<br>
+\# Note that this file is consulted directly only when the system is running<br>
+\# in single-user mode. At other times this information is provided by<br>
+\# Open Directory.<br>
+\#<br>
+\# See the opendirectoryd(8) man page for additional information about<br>
+\# Open Directory.<br>
+\#\#<br>
 nobody:*:-2:-2:Unprivileged User:/var/empty:/usr/bin/false<br>
 root:*:0:0:System Administrator:/var/root:/bin/sh<br>
 daemon:*:1:1:System Services:/var/root:/usr/bin/false<br>
-##<br>
-# Host Database<br>
-#<br>
-# localhost is used to configure the loopback interface<br>
-# when the system is booting. Do not change this entry.<br>
-##<br>
+\#\#<br>
+\# Host Database<br>
+\#<br>
+\# localhost is used to configure the loopback interface<br>
+\# when the system is booting. Do not change this entry.<br>
+\#\#<br>
 127.0.0.1   localhost<br>
 255.255.255.255 broadcasthost<br>
 ::1 localhost<br>
@@ -118,16 +118,16 @@ Display the first 10 lines of /etc/passwd<br>
 Example:<br>
 
 $ ./5-firstlines<br>
-##<br>
-# User Database<br>
-#<br>
-# Note that this file is consulted directly only when the system is running<br>
-# in single-user mode. At other times this information is provided by<br>
-# Open Directory.<br>
-#<br>
-# See the opendirectoryd(8) man page for additional information about<br>
-# Open Directory.<br>
-##<br>
+\#\#<br>
+\# User Database<br>
+\#<br>
+\# Note that this file is consulted directly only when the system is running<br>
+\# in single-user mode. At other times this information is provided by<br>
+\# Open Directory.<br>
+\#<br>
+\# See the opendirectoryd(8) man page for additional information about<br>
+\# Open Directory.<br>
+\#\#<br>
 $<br>
 
 # 6. Line #2
@@ -136,7 +136,7 @@ Write a script that displays the third line of the file iacta.<br>
 The file iacta will be in the working directory<br>
 
 * You’re not allowed to use sed
-* 
+
 julien@ubuntu:/tmp/h$ cat iacta <br>
 Alea iacta est<br>
 <br>
