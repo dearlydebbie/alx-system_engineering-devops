@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-# prints processes
+# Displays the current running processes, in a user-oriented format.
 
-ps u -A -H
+ps -faux
